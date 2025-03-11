@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useTheme } from '../composables/useTheme'
-import { MoonIcon, SunIcon, Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+// import { useTheme } from "../composables/useTheme";
+import {
+  // MoonIcon,
+  // SunIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/vue/24/outline";
 
-const { isDark, toggleTheme } = useTheme()
-const isMenuOpen = ref(false)
+// const { isDark, toggleTheme } = useTheme();
+const isMenuOpen = ref(false);
 
 const navigation = [
-  { name: 'Главная', path: '/' },
-  { name: 'Приюты', path: '/shelters' },
-  { name: 'Пожертвования', path: '/donations' },
-  { name: 'Профиль', path: '/profile' },
-]
+  { name: "Главная", path: "/" },
+  { name: "Приюты", path: "/shelters" },
+  { name: "Пожертвования", path: "/donations" },
+  { name: "Профиль", path: "/profile" },
+];
 </script>
 
 <template>
@@ -21,7 +26,10 @@ const navigation = [
       <div class="flex justify-between h-16">
         <div class="flex">
           <div class="flex-shrink-0 flex items-center">
-            <RouterLink to="/" class="text-xl font-bold text-blue-600 dark:text-blue-400">
+            <RouterLink
+              to="/"
+              class="text-xl font-bold text-blue-600 dark:text-blue-400"
+            >
               ShelterCare
             </RouterLink>
           </div>
@@ -37,16 +45,16 @@ const navigation = [
             </RouterLink>
           </div>
         </div>
-        
+
         <div class="flex items-center">
-          <button
+          <!-- <button
             @click="toggleTheme"
             class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <MoonIcon v-if="!isDark" class="h-6 w-6" />
             <SunIcon v-else class="h-6 w-6" />
-          </button>
-          
+          </button> -->
+
           <!-- Mobile menu button -->
           <div class="sm:hidden ml-3">
             <button
@@ -59,12 +67,9 @@ const navigation = [
           </div>
         </div>
       </div>
-      
+
       <!-- Mobile menu -->
-      <div
-        v-show="isMenuOpen"
-        class="sm:hidden"
-      >
+      <div v-show="isMenuOpen" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
           <RouterLink
             v-for="item in navigation"
